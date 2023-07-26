@@ -1,0 +1,64 @@
+<div class="container">
+  <h1 class="center" >Welcome to Bus Tracker</h1>  
+  <p></p>
+</div>
+<table *ngIf="isUser">
+  <tr>
+    <th>From</th>
+    <th>To</th>
+    <th>Bus Number</th>
+    <th>Action</th>
+  </tr>
+  <tr>
+    <td>College</td>
+    <td>Gandhipuram</td>
+    <td><select name="buses" id="bus"
+      #mySelect>
+      <option value="TN01-1234">Select Bus</option>
+      <option value="TN01-1234">Bus1</option>      
+    </select></td>
+    <td><button type="button" (click)="loadMap()">Get location</button></td>
+  </tr>  
+  <tr>
+    <td>Bustand</td>
+    <td>Gandhipuram</td>
+    <td><select name="buses" id="bus"       #mySelect>
+      <option value="TN01-1234">Select Bus</option>
+      <option value="TN01-1234">Bus2</option>      
+    </select></td>
+    <td><button type="button" (click)="loadMap()">Get location</button></td>
+  </tr>  
+</table>
+
+<div *ngIf="isUser && ShowMap">
+  <div class="container">
+    <h1 class="center">Bus {{selBus}} location </h1>
+    <p></p>
+  </div>
+  
+<table>
+  <tr>
+    <google-map width="100%" height="450px" [zoom]="zoom">
+      <map-marker 
+        [position]="position" 
+        label="Current Location">  
+      </map-marker>    
+    </google-map>
+  </tr> 
+</table>
+</div>
+
+<div class="container" *ngIf="!isUser">
+  <h1 class="center" >Bus location is captured and the below bus location is saved into the Database.</h1>  
+</div>
+<div class="container" *ngIf="!isUser">
+  <h1 class="center" >Bus No Bus-1</h1>  
+</div>
+
+<div class="container" *ngIf="!isUser">
+  <h1 class="center" >Latitude {{lat}}</h1>  
+</div>
+
+<div class="container" *ngIf="!isUser">
+  <h1 class="center" >Longitude {{lng}}</h1>  
+</div>
